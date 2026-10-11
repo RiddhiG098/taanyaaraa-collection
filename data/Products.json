@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "oxidised silver mirror Ring with Ghungroo charms",
+    "category": "rings",
+    "price": 50,
+    "originalPrice": 50,
+    "badge": "BESTSELLER",
+    "image": "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0",
+    "description": "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells"
+  },
+  {
+    "id": 2,
+    "name": "rectangle Sun ring oxidized",
+    "category": "rings",
+    "price": 50,
+    "originalPrice": 50,
+    "badge": "NEW",
+    "image": "https://lh3.googleusercontent.com/d/1cC2bQHQ2GPudTM9YjKnz2UvxZIGbhRiq",
+    "description": "oxidised silver statement ring featuring an intricate rectangular design with a central motif"
+  },
+  {
+    "id": 3,
+    "name": "Royal Kundan Choker Set",
+    "category": "necklaces",
+    "price": 299,
+    "originalPrice": 399,
+    "badge": "TRENDING",
+    "image": "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0",
+    "description": "Elegant Kundan handcrafted choker necklace set"
+  }
+]
