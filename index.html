@@ -15,13 +15,13 @@
         extend: {
           colors: {
             brand: {
-              rose: 'var(--brand-rose, #E8A0BF)',
-              rosegold: 'var(--brand-rosegold, #E0A899)',
-              soft: 'var(--brand-soft, #FDF7F4)',
-              gold: 'var(--brand-gold, #B8860B)',
-              dark: 'var(--brand-dark, #2A1B24)',
-              accent: 'var(--brand-accent, #C86B85)',
-              card: 'var(--brand-card, #FFF0F5)'
+              rose: 'var(--brandRose, #E8A0BF)',
+              rosegold: 'var(--brandRoseGold, #E0A899)',
+              soft: 'var(--brandSoft, #FDF7F4)',
+              gold: 'var(--brandGold, #B8860B)',
+              dark: 'var(--brandDark, #2A1B24)',
+              accent: 'var(--brandAccent, #C86B85)',
+              card: 'var(--brandCard, #FFF0F5)'
             }
           },
           fontFamily: {
@@ -100,60 +100,6 @@
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </main>
 
-  <!-- STORE POLICIES & TERMS SECTION -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-    <div class="bg-gradient-to-r from-pink-100/80 via-rose-50/80 to-pink-100/80 border border-pink-200 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-brand-accent to-brand-rosegold"></div>
-      
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 rounded-full bg-white text-brand-accent flex items-center justify-center text-lg shadow-sm border border-pink-200">
-          <i class="fa-solid fa-shield-heart"></i>
-        </div>
-        <div>
-          <h2 class="font-serif text-xl sm:text-2xl font-bold text-brand-dark">Store Policies & Terms</h2>
-          <p class="text-xs text-brand-accent font-semibold tracking-wide uppercase">Classy, Transparent & Secure Ordering</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
-          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
-            <i class="fa-solid fa-credit-card text-brand-accent"></i> Payment Policy
-          </div>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            • <strong>Prepaid:</strong> We accept UPI, GPay, PhonePe, and Bank Transfer.<br>
-            • <strong>Cash on Delivery (COD):</strong> Available with an extra ₹50 COD charge plus a mandatory <strong>₹100 advance payment</strong> to confirm order.<br>
-            • <em>No order is confirmed without full payment or advance deposit.</em> This policy avoids fake orders and keeps prices low for genuine customers like you!
-          </p>
-        </div>
-
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
-          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
-            <i class="fa-solid fa-box-open text-brand-accent"></i> Exchange & Jewelry Care
-          </div>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            • <strong>Unboxing Video is Mandatory:</strong> Please film an uninterrupted unboxing video for any complaint.<br>
-            • Exchanges are strictly available only for damaged or wrong products received. Inform us within 24 hours of delivery.<br>
-            • No return/exchange for slight color differences due to lighting or if you simply don't like the product.<br>
-            • 💎 <strong>Care Tip:</strong> Keep jewelry away from water and perfume to maintain its long-lasting shine!
-          </p>
-        </div>
-
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
-          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
-            <i class="fa-solid fa-truck-fast text-brand-accent"></i> Shipping Policy
-          </div>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            • We ship <strong>Pan India</strong> with dispatch within 24–48 hours after payment confirmation.<br>
-            • Delivery takes 4–7 working days depending on location. Tracking ID is shared directly on WhatsApp.<br>
-            • <strong>Free Shipping:</strong> On orders above <strong>₹499 within Madhya Pradesh</strong>, and above <strong>₹599 Pan India</strong>.<br>
-            • Flat <strong>₹70 shipping charge</strong> applies on orders below threshold.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CART SLIDE-OUT DRAWER -->
   <div id="cartDrawer" class="fixed inset-0 z-50 invisible transition-opacity duration-300">
     <div onclick="toggleCart()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
@@ -210,12 +156,6 @@
           <textarea id="custAddress" required rows="2" placeholder="Full house number, street, city & pincode" class="w-full border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-rose"></textarea>
         </div>
 
-        <div class="bg-pink-50 rounded-2xl p-3 border border-pink-200 text-xs text-gray-600 space-y-1">
-          <p class="font-bold text-brand-accent">💡 How it works:</p>
-          <p>1. Clicking below opens WhatsApp with your order details pre-filled.</p>
-          <p>2. The store owner will confirm your order and share payment details in the chat.</p>
-        </div>
-
         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-base">
           <i class="fa-brands fa-whatsapp text-xl"></i> Send Order on WhatsApp
         </button>
@@ -227,10 +167,40 @@
   <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-2">
     <p class="font-serif text-lg font-bold text-white" id="footerStoreName">Taanyaaraa Collection</p>
     <p id="footerContactInfo">WhatsApp: +91 82696 43761 | Direct WhatsApp Shop</p>
-    <p>© 2026 <span id="footerCopyright">Taanyaaraa Collection</span>. All rights reserved. Crafted with care for jewelry lovers.</p>
+    <p>© 2026 <span id="footerCopyright">Taanyaaraa Collection</span>. All rights reserved.</p>
   </footer>
 
   <script>
+    // Robust CSV parser supporting quotes and commas inside text
+    function parseCSV(text) {
+      const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
+      if (lines.length === 0) return [];
+      
+      const parseCSVLine = (line) => {
+        const regex = /(?:^|,)(?:"([^"]*(?:""[^"]*)*)"|([^",]*))/g;
+        const result = [];
+        let match;
+        while ((match = regex.exec(line)) !== null) {
+          if (match[1] !== undefined) {
+            result.push(match[1].replace(/""/g, '"').trim());
+          } else if (match[2] !== undefined) {
+            result.push(match[2].trim());
+          }
+        }
+        return result;
+      };
+
+      const headers = parseCSVLine(lines[0]);
+      return lines.slice(1).map(line => {
+        const values = parseCSVLine(line);
+        const obj = {};
+        headers.forEach((h, i) => {
+          obj[h] = values[i] || '';
+        });
+        return obj;
+      });
+    }
+
     function formatImageUrl(url) {
       if (!url) return 'https://via.placeholder.com/300';
       const cleanUrl = url.trim();
@@ -250,53 +220,54 @@
       heroImageUrl: "https://lh3.googleusercontent.com/d/1RYon4HdKFwV2g8wCF3w1VTNHrus58Aw8"
     };
 
-    let products = [
-      { id: 1, name: "oxidised silver mirror Ring", category: "rings", price: 39, originalPrice: 39, badge: "OUT OF STOCK", image: "https://lh3.googleusercontent.com/d/1cC2bQHQ2GPudTM9YjKnz2UvxZIGbhRiq", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
-      { id: 2, name: "rectangle Sun ring oxidized", category: "rings", price: 49, originalPrice: 49, badge: "IN STOCK", image: "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0", description: "oxidised silver statement ring featuring an intricate rectangular design with a central motif" },
-      { id: 3, name: "Royal Kundan Choker Set", category: "necklaces", price: 49, originalPrice: 49, badge: "OUT OF STOCK", image: "https://lh3.googleusercontent.com/d/1P7i31wFalch9zDAwtbbYdU5s_eCoJ_a8", description: "Elegant Kundan handcrafted choker necklace set" },
-      { id: 4, name: "oxidised silver mirror Ring", category: "rings", price: 39, originalPrice: 39, badge: "", image: "https://lh3.googleusercontent.com/d/1560YqgkXtd5Y7eKutz_UaBxc4ymrt8ba", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
-      { id: 5, name: "EarRing", category: "earrings", price: 220, originalPrice: 220, badge: "", image: "https://lh3.googleusercontent.com/d/17Rs1dBEBzygDOBjkaNBgEvO47aG3MA-c", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
-      { id: 6, name: "Necklace with matching earrings", category: "necklaces", price: 249, originalPrice: 249, badge: "IN STOCK", image: "https://lh3.googleusercontent.com/d/1rY5X4SBowvfGL35a5J_-PskQejALE9cE", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" }
-    ];
-
+    let products = [];
     let currentCategory = 'all';
     let cart = [];
 
     async function initStoreData() {
+      // 1. Fetch Store Config CSV
       try {
-        const cfgRes = await fetch('./data/Store_Config.json');
+        const cfgRes = await fetch('./data/Store_Config.csv');
         if (cfgRes.ok) {
-          const cfgData = await cfgRes.json();
-          config = { ...config, ...cfgData };
-        }
-      } catch (e) {
-        console.warn("Using default config settings.");
-      }
-      updateUIConfig();
-
-      try {
-        const themeRes = await fetch('./data/Theme_Config.json');
-        if (themeRes.ok) {
-          const themeData = await themeRes.json();
-          Object.entries(themeData).forEach(([key, val]) => {
-            document.documentElement.style.setProperty(`--${key}`, val);
+          const text = await cfgRes.text();
+          const rows = parseCSV(text);
+          rows.forEach(r => {
+            if (r.Key) config[r.Key] = r.Value;
           });
         }
-      } catch (e) {
-        console.warn("Using default theme colors.");
-      }
+      } catch (e) { console.warn("Using default store config."); }
+      updateUIConfig();
 
+      // 2. Fetch Theme Config CSV
       try {
-        const prodRes = await fetch('./data/Products.json');
-        if (prodRes.ok) {
-          const prodData = await prodRes.json();
-          if (Array.isArray(prodData) && prodData.length > 0) {
-            products = prodData.map(p => ({ ...p, image: formatImageUrl(p.image) }));
-          }
+        const themeRes = await fetch('./data/Theme_Config.csv');
+        if (themeRes.ok) {
+          const text = await themeRes.text();
+          const rows = parseCSV(text);
+          rows.forEach(r => {
+            if (r.Key) document.documentElement.style.setProperty(`--${r.Key}`, r.Value);
+          });
         }
-      } catch (e) {
-        console.warn("Using default product fallback list.");
-      }
+      } catch (e) { console.warn("Using default theme config."); }
+
+      // 3. Fetch Products CSV
+      try {
+        const prodRes = await fetch('./data/Products.csv');
+        if (prodRes.ok) {
+          const text = await prodRes.text();
+          const rows = parseCSV(text);
+          products = rows.map(r => ({
+            id: parseInt(r.ID) || 0,
+            name: r.Name || '',
+            category: (r.Category || '').toLowerCase(),
+            price: parseFloat(r['Price']) || parseFloat(r['Price (₹)']) || 0,
+            originalPrice: parseFloat(r['Original Price']) || parseFloat(r['Original Pr']) || parseFloat(r['Original Price (₹)']) || 0,
+            badge: r['Badge / Tag'] || r['Badge / Ta'] || r.Badge || '',
+            image: formatImageUrl(r['Image URL'] || r.Image),
+            description: r.Description || ''
+          }));
+        }
+      } catch (e) { console.warn("Error parsing Products.csv"); }
       renderProducts();
     }
 
@@ -308,12 +279,8 @@
       document.getElementById('footerCopyright').innerText = `${config.storeName} ${config.storeTagline}`;
       document.getElementById('footerContactInfo').innerText = `WhatsApp: +${config.whatsappNumber} | Email: ${config.email}`;
 
-      if (config.logoUrl) {
-        document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
-      }
-      if (config.heroImageUrl) {
-        document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
-      }
+      if (config.logoUrl) document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
+      if (config.heroImageUrl) document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
     }
 
     function renderProducts() {
@@ -332,8 +299,7 @@
       }
 
       grid.innerHTML = filtered.map(p => {
-        const isOutOfStock = p.badge && p.badge.trim().toLowerCase() === 'out of stock';
-        
+        const isOutOfStock = p.badge && p.badge.trim().toLowerCase().includes('out of st');
         return `
           <div class="bg-white rounded-3xl p-4 border border-pink-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
             <div>
@@ -376,13 +342,11 @@
       renderProducts();
     }
 
-    function filterProducts() {
-      renderProducts();
-    }
+    function filterProducts() { renderProducts(); }
 
     function addToCart(id) {
       const item = products.find(p => p.id === id);
-      if (!item || (item.badge && item.badge.trim().toLowerCase() === 'out of stock')) return;
+      if (!item || (item.badge && item.badge.trim().toLowerCase().includes('out of st'))) return;
 
       const existing = cart.find(c => c.id === id);
       if (existing) {
