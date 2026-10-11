@@ -163,26 +163,58 @@
     </div>
   </div>
 
-  <!-- POLICY MODAL -->
-  <div id="policyModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-      <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">✕</button>
-      <h3 id="policyModalTitle" class="font-serif text-2xl font-bold text-brand-dark mb-4"></h3>
-      <div id="policyModalContent" class="text-xs text-gray-600 leading-relaxed space-y-3"></div>
-    </div>
-  </div>
+  <!-- FOOTER WITH DIRECT INLINE POLICIES -->
+  <footer class="bg-brand-dark text-white py-10 px-4 border-t border-pink-900 mt-12">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <p class="font-serif text-2xl font-bold text-white tracking-wide" id="footerStoreName">Taanyaaraa Collection</p>
 
-  <!-- FOOTER -->
-  <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-4">
-    <p class="font-serif text-lg font-bold text-white" id="footerStoreName">Taanyaaraa Collection</p>
-    
-    <!-- STORE POLICIES -->
-    <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-pink-200">
-      <button onclick="openPolicyModal('payment')" class="hover:text-white hover:underline transition">Payment Policy</button>
-      <span>•</span>
-      <button onclick="openPolicyModal('refund')" class="hover:text-white hover:underline transition">Exchange Policy</button>
-      <span>•</span>
-      <button onclick="openPolicyModal('shipping')" class="hover:text-white hover:underline transition">Shipping Policy</button>
+      <!-- INLINE DIRECT STORE POLICIES ACCORDION -->
+      <div class="space-y-3 text-left max-w-2xl mx-auto">
+        
+        <!-- PAYMENT POLICY -->
+        <div class="bg-white/5 border border-pink-500/20 rounded-2xl overflow-hidden transition">
+          <button onclick="togglePolicyAccordion('paymentAcc')" class="w-full py-3.5 px-5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-pink-200 hover:text-white hover:bg-white/5 transition">
+            <span>💳 Payment & Order Policy</span>
+            <i id="paymentAccIcon" class="fa-solid fa-chevron-down text-pink-300 text-xs transition duration-300"></i>
+          </button>
+          <div id="paymentAcc" class="hidden px-5 pb-4 text-xs text-pink-100/90 leading-relaxed space-y-2 border-t border-pink-500/10 pt-3">
+            <p><strong>Accepted Payment Methods:</strong> We accept Prepaid payments via UPI, Google Pay, PhonePe, and Direct Bank Transfer.</p>
+            <p><strong>Cash on Delivery (COD):</strong> COD is available with an extra ₹50 COD charge and a non-refundable advance payment of ₹100 required to confirm the booking.</p>
+            <p class="text-pink-300 italic">Note: No order is confirmed without payment or advance. This policy prevents fake orders and allows us to keep prices low for genuine customers.</p>
+          </div>
+        </div>
+
+        <!-- EXCHANGE POLICY -->
+        <div class="bg-white/5 border border-pink-500/20 rounded-2xl overflow-hidden transition">
+          <button onclick="togglePolicyAccordion('exchangeAcc')" class="w-full py-3.5 px-5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-pink-200 hover:text-white hover:bg-white/5 transition">
+            <span>✨ Exchange & Return Policy</span>
+            <i id="exchangeAccIcon" class="fa-solid fa-chevron-down text-pink-300 text-xs transition duration-300"></i>
+          </button>
+          <div id="exchangeAcc" class="hidden px-5 pb-4 text-xs text-pink-100/90 leading-relaxed space-y-2 border-t border-pink-500/10 pt-3">
+            <p><strong>Unboxing Video Mandatory:</strong> A continuous, unedited unboxing video is strictly required for any complaint or claim.</p>
+            <p><strong>Exchange Eligibility:</strong> Exchanges are available strictly for damaged or wrong products received. Please inform us within 24 hours of delivery with your unboxing video.</p>
+            <p><strong>Non-Exchangeable Conditions:</strong> No returns or exchanges for minor color/lighting differences, size issues, or personal preferences.</p>
+            <p class="text-pink-300 italic">Jewelry Care: Keep your jewelry away from water and perfume to maintain its shine and longevity.</p>
+          </div>
+        </div>
+
+        <!-- SHIPPING POLICY -->
+        <div class="bg-white/5 border border-pink-500/20 rounded-2xl overflow-hidden transition">
+          <button onclick="togglePolicyAccordion('shippingAcc')" class="w-full py-3.5 px-5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-pink-200 hover:text-white hover:bg-white/5 transition">
+            <span>🚚 Shipping & Delivery Policy</span>
+            <i id="shippingAccIcon" class="fa-solid fa-chevron-down text-pink-300 text-xs transition duration-300"></i>
+          </button>
+          <div id="shippingAcc" class="hidden px-5 pb-4 text-xs text-pink-100/90 leading-relaxed space-y-2 border-t border-pink-500/10 pt-3">
+            <p><strong>Dispatch & Delivery:</strong> We ship Pan India. Orders are dispatched within 24 to 48 hours after payment. Delivery takes 4 to 7 working days depending on location. Tracking ID will be shared on WhatsApp.</p>
+            <p><strong>Shipping Charges:</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><strong>Free Shipping:</strong> On orders above ₹499 within Madhya Pradesh, or Pan-India prepaid orders above ₹599.</li>
+              <li><strong>Standard Rate:</strong> Flat ₹70 shipping charge applies to all other orders.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </footer>
 
@@ -256,37 +288,6 @@
     let products = [];
     let currentCategory = 'all';
     let cart = [];
-
-    const policies = {
-      payment: {
-        title: "Payment & Order Policy",
-        content: `
-          <p><strong>Accepted Payment Methods:</strong> We accept Prepaid payments via UPI, Google Pay, PhonePe, and Direct Bank Transfer.</p>
-          <p><strong>Cash on Delivery (COD):</strong> COD is available with an extra ₹50 COD charge and a non-refundable advance payment of ₹100 required to confirm the booking.</p>
-          <p><em>Note: No order is confirmed without payment or advance. This policy prevents fake orders and allows us to keep prices low for genuine customers.</em></p>
-        `
-      },
-      refund: {
-        title: "Exchange Policy",
-        content: `
-          <p><strong>Unboxing Video Mandatory:</strong> A continuous, unedited unboxing video is strictly required for any complaint or claim.</p>
-          <p><strong>Exchange Eligibility:</strong> Exchanges are available strictly for damaged or wrong products received. Please inform us within 24 hours of delivery with your unboxing video.</p>
-          <p><strong>Non-Exchangeable Conditions:</strong> No returns or exchanges for minor color/lighting differences, size issues, or personal preferences.</p>
-          <p><strong>Jewelry Care:</strong> Keep your jewelry away from water and perfume to maintain its shine and longevity.</p>
-        `
-      },
-      shipping: {
-        title: "Shipping Policy",
-        content: `
-          <p><strong>Dispatch & Delivery:</strong> We ship Pan India. Orders are dispatched within 24 to 48 hours after payment. Delivery takes 4 to 7 working days depending on location. Tracking ID will be shared on WhatsApp.</p>
-          <p><strong>Shipping Charges:</strong></p>
-          <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Free Shipping:</strong> On orders above ₹499 within Madhya Pradesh, or Pan-India prepaid orders above ₹599.</li>
-            <li><strong>Standard Rate:</strong> Flat ₹70 shipping charge applies to all other orders.</li>
-          </ul>
-        `
-      }
-    };
 
     async function initStoreData() {
       // 1. Fetch Store Config CSV
@@ -494,16 +495,16 @@
       document.getElementById('checkoutModal').classList.add('hidden');
     }
 
-    function openPolicyModal(policyKey) {
-      const p = policies[policyKey];
-      if (!p) return;
-      document.getElementById('policyModalTitle').innerText = p.title;
-      document.getElementById('policyModalContent').innerHTML = p.content;
-      document.getElementById('policyModal').classList.remove('hidden');
-    }
-
-    function closePolicyModal() {
-      document.getElementById('policyModal').classList.add('hidden');
+    function togglePolicyAccordion(accId) {
+      const acc = document.getElementById(accId);
+      const icon = document.getElementById(accId + 'Icon');
+      if (acc.classList.contains('hidden')) {
+        acc.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        acc.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
     }
 
     function sendWhatsAppOrder(e) {
