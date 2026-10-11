@@ -1,9 +1,10 @@
+<!-- Line 1: HTML Document Start -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taanyaaraa Collection | Cute & Elegant Jewelry</title>
+  <title id="pageTitle">Taanyaaraa Collection | Cute & Elegant Jewelry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,12 +16,13 @@
         extend: {
           colors: {
             brand: {
-              rose: '#E8A0BF',
-              soft: '#FDF7F4',
-              gold: '#D4AF37',
-              dark: '#2A1B24',
-              accent: '#C86B85',
-              card: '#FFF0F5'
+              rose: 'var(--brand-rose, #E8A0BF)',
+              rosegold: 'var(--brand-rosegold, #E0A899)',
+              soft: 'var(--brand-soft, #FDF7F4)',
+              gold: 'var(--brand-gold, #B8860B)',
+              dark: 'var(--brand-dark, #2A1B24)',
+              accent: 'var(--brand-accent, #C86B85)',
+              card: 'var(--brand-card, #FFF0F5)'
             }
           },
           fontFamily: {
@@ -35,20 +37,20 @@
 <body class="bg-[#FAF5F7] text-brand-dark font-sans flex flex-col min-h-screen">
 
   <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="bg-gradient-to-r from-brand-rose via-brand-accent to-brand-rose text-white text-xs font-semibold py-2 text-center shadow-sm">
-    ✨ Direct WhatsApp Order System | Free Shipping on Orders Above ₹999 ✨
+  <div class="bg-gradient-to-r from-brand-rosegold via-brand-accent to-brand-rosegold text-white text-xs font-semibold py-2 text-center shadow-sm">
+    ✨ Direct WhatsApp Order System | Free Shipping on MP Orders > ₹499 & Pan India > ₹599 ✨
   </div>
 
   <!-- NAVIGATION HEADER -->
   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-pink-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-brand-accent font-serif text-xl font-bold shadow-inner border border-pink-200">
-          T
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-pink-200 bg-pink-50 flex items-center justify-center shadow-inner" id="logoContainer">
+          <span class="font-serif text-xl font-bold text-brand-accent">T</span>
         </div>
         <div>
-          <a href="#" class="font-serif text-2xl font-bold tracking-tight text-brand-dark hover:text-brand-accent transition">Taanyaaraa</a>
-          <span class="block text-[10px] tracking-widest uppercase text-brand-accent font-semibold -mt-1">Collection</span>
+          <a href="#" id="siteHeaderTitle" class="font-serif text-2xl font-bold tracking-tight text-brand-dark hover:text-brand-accent transition">Taanyaaraa</a>
+          <span id="siteHeaderSubtitle" class="block text-[10px] tracking-widest uppercase text-brand-accent font-semibold -mt-1">Collection</span>
         </div>
       </div>
 
@@ -78,7 +80,7 @@
         <p class="text-gray-600 text-sm sm:text-base">Select your favorite pieces and order directly on WhatsApp!</p>
       </div>
       <div class="w-full md:w-auto flex justify-center">
-        <img src="https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0" class="w-64 h-64 object-cover rounded-3xl shadow-xl border-4 border-white rotate-2 hover:rotate-0 transition duration-300">
+        <img id="heroImage" src="https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0" class="w-64 h-64 object-cover rounded-3xl shadow-xl border-4 border-white rotate-2 hover:rotate-0 transition duration-300">
       </div>
     </div>
   </section>
@@ -98,6 +100,63 @@
     <!-- PRODUCT GRID -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </main>
+
+  <!-- STORE POLICIES & TERMS SECTION -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+    <div class="bg-gradient-to-r from-pink-100/80 via-rose-50/80 to-pink-100/80 border border-pink-200 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-brand-accent to-brand-rosegold"></div>
+      
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-full bg-white text-brand-accent flex items-center justify-center text-lg shadow-sm border border-pink-200">
+          <i class="fa-solid fa-shield-heart"></i>
+        </div>
+        <div>
+          <h2 class="font-serif text-xl sm:text-2xl font-bold text-brand-dark">Store Policies & Terms</h2>
+          <p class="text-xs text-brand-accent font-semibold tracking-wide uppercase">Classy, Transparent & Secure Ordering</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- PAYMENT POLICY -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
+          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
+            <i class="fa-solid fa-credit-card text-brand-accent"></i> Payment Policy
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            • <strong>Prepaid:</strong> We accept UPI, GPay, PhonePe, and Bank Transfer.<br>
+            • <strong>Cash on Delivery (COD):</strong> Available with an extra ₹50 COD charge plus a mandatory <strong>₹100 advance payment</strong> to confirm order.<br>
+            • <em>No order is confirmed without full payment or advance deposit.</em> This policy avoids fake orders and keeps prices low for genuine customers like you!
+          </p>
+        </div>
+
+        <!-- EXCHANGE & CARE POLICY -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
+          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
+            <i class="fa-solid fa-box-open text-brand-accent"></i> Exchange & Jewelry Care
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            • <strong>Unboxing Video is Mandatory:</strong> Please film an uninterrupted unboxing video for any complaint.<br>
+            • Exchanges are strictly available only for damaged or wrong products received. Inform us within 24 hours of delivery.<br>
+            • No return/exchange for slight color differences due to lighting or if you simply don't like the product.<br>
+            • 💎 <strong>Care Tip:</strong> Keep jewelry away from water and perfume to maintain its long-lasting shine!
+          </p>
+        </div>
+
+        <!-- SHIPPING POLICY -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
+          <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
+            <i class="fa-solid fa-truck-fast text-brand-accent"></i> Shipping Policy
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            • We ship <strong>Pan India</strong> with dispatch within 24–48 hours after payment confirmation.<br>
+            • Delivery takes 4–7 working days depending on location. Tracking ID is shared directly on WhatsApp.<br>
+            • <strong>Free Shipping:</strong> On orders above <strong>₹499 within Madhya Pradesh</strong>, and above <strong>₹599 Pan India</strong>.<br>
+            • Flat <strong>₹70 shipping charge</strong> applies on orders below threshold.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CART SLIDE-OUT DRAWER -->
   <div id="cartDrawer" class="fixed inset-0 z-50 invisible transition-opacity duration-300">
@@ -170,18 +229,46 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200">
-    <p class="font-serif text-lg font-bold text-white mb-2">Taanyaaraa Collection</p>
-    <p>© 2026 Taanyaaraa Collection. All rights reserved. Crafted with care for jewelry lovers.</p>
+  <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-2">
+    <p class="font-serif text-lg font-bold text-white" id="footerStoreName">Taanyaaraa Collection</p>
+    <p id="footerContactInfo">WhatsApp: +91 82696 43761 | Direct WhatsApp Shop</p>
+    <p>© 2026 <span id="footerCopyright">Taanyaaraa Collection</span>. All rights reserved. Crafted with care for jewelry lovers.</p>
   </footer>
 
   <script>
-    // STORE DATA INTEGRATED DIRECTLY
-    const STORE_CONFIG = {
-      whatsappNumber: "918269643761"
+    // =========================================================================
+    // PUBLISHED GOOGLE SHEET LINK PROVIDED BY USER:
+    // https://docs.google.com/spreadsheets/d/e/2PACX-1vTHfZZ7BvBs2QLGlS2IOrIU6SNtdTyfOF0wTBKTF--xK-XXF9Ff5LKLUjdwlh8ULIlKwY4FsEb-aOeT/pubhtml
+    // =========================================================================
+    const PUBLISHED_BASE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHfZZ7BvBs2QLGlS2IOrIU6SNtdTyfOF0wTBKTF--xK-XXF9Ff5LKLUjdwlh8ULIlKwY4FsEb-aOeT/gviz/tq?tqx=out:json';
+
+    const CONFIG_SHEET_URL  = `${PUBLISHED_BASE}&sheet=Store_Config`;
+    const PRODUCTS_SHEET_URL = `${PUBLISHED_BASE}&sheet=Products`;
+    const THEME_SHEET_URL    = `${PUBLISHED_BASE}&sheet=Theme_Config`;
+
+    // Helper function to convert raw Google Drive links to direct lh3 image URLs
+    function formatImageUrl(url) {
+      if (!url) return 'https://via.placeholder.com/300';
+      const cleanUrl = url.trim();
+      const driveMatch = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/id=([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
+      }
+      return cleanUrl;
+    }
+
+    // DEFAULT FALLBACK CONFIG
+    let STORE_CONFIG = {
+      storeName: "Taanyaaraa",
+      storeTagline: "Collection",
+      whatsappNumber: "918269643761",
+      email: "contact@taanyaaraa.com",
+      logoUrl: "",
+      heroImageUrl: "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0"
     };
 
-    const PRODUCTS_DATA = [
+    // DEFAULT FALLBACK PRODUCTS
+    let PRODUCTS_DATA = [
       {
         "id": 1,
         "name": "oxidised silver mirror Ring with Ghungroo charms",
@@ -204,11 +291,87 @@
       }
     ];
 
-    const products = PRODUCTS_DATA;
-    const config = STORE_CONFIG;
+    let products = PRODUCTS_DATA;
+    let config = STORE_CONFIG;
 
     let currentCategory = 'all';
     let cart = [];
+
+    // FETCH CONFIG, PRODUCTS, AND THEME FROM GOOGLE SHEETS
+    async function initStoreData() {
+      // 1. Fetch Store Config
+      try {
+        const cfgRes = await fetch(CONFIG_SHEET_URL);
+        const cfgText = await cfgRes.text();
+        const cfgJson = JSON.parse(cfgText.substring(47, cfgText.length - 2));
+        
+        cfgJson.table.rows.forEach(row => {
+          const key = row.c[0]?.v;
+          const val = row.c[1]?.v;
+          if (key && val) config[key] = val;
+        });
+
+        updateUIConfig();
+      } catch (e) {
+        console.warn("Using default config settings.", e);
+      }
+
+      // 2. Fetch Theme Config
+      try {
+        const themeRes = await fetch(THEME_SHEET_URL);
+        const themeText = await themeRes.text();
+        const themeJson = JSON.parse(themeText.substring(47, themeText.length - 2));
+        
+        themeJson.table.rows.forEach(row => {
+          const key = row.c[0]?.v;
+          const val = row.c[1]?.v;
+          if (key && val) {
+            document.documentElement.style.setProperty(`--${key}`, val);
+          }
+        });
+      } catch (e) {
+        console.warn("Using default theme colors.", e);
+      }
+
+      // 3. Fetch Products
+      try {
+        const prodRes = await fetch(PRODUCTS_SHEET_URL);
+        const prodText = await prodRes.text();
+        const prodJson = JSON.parse(prodText.substring(47, prodText.length - 2));
+        
+        products = prodJson.table.rows.map((row, idx) => ({
+          id: row.c[0]?.v || (idx + 1),
+          name: row.c[1]?.v || 'Jewelry Item',
+          category: (row.c[2]?.v || 'all').toLowerCase(),
+          price: Number(row.c[3]?.v || 0),
+          originalPrice: Number(row.c[4]?.v || 0),
+          badge: row.c[5]?.v || '',
+          image: formatImageUrl(row.c[6]?.v),
+          description: row.c[7]?.v || ''
+        }));
+
+        renderProducts();
+      } catch (e) {
+        console.warn("Using default product list.", e);
+        renderProducts();
+      }
+    }
+
+    function updateUIConfig() {
+      document.getElementById('siteHeaderTitle').innerText = config.storeName;
+      document.getElementById('siteHeaderSubtitle').innerText = config.storeTagline;
+      document.getElementById('pageTitle').innerText = `${config.storeName} ${config.storeTagline} | Cute & Elegant Jewelry`;
+      document.getElementById('footerStoreName').innerText = `${config.storeName} ${config.storeTagline}`;
+      document.getElementById('footerCopyright').innerText = `${config.storeName} ${config.storeTagline}`;
+      document.getElementById('footerContactInfo').innerText = `WhatsApp: +${config.whatsappNumber} | Email: ${config.email}`;
+
+      if (config.logoUrl) {
+        document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
+      }
+      if (config.heroImageUrl) {
+        document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
+      }
+    }
 
     function renderProducts() {
       const grid = document.getElementById('productGrid');
@@ -354,7 +517,7 @@
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       let itemsListText = cart.map(item => `• ${item.qty}x ${item.name} (₹${item.price * item.qty})`).join('\n');
 
-      const message = `🌸 *NEW ORDER - Taanyaaraa Collection* 🌸\n\n` +
+      const message = `🌸 *NEW ORDER - ${config.storeName} ${config.storeTagline}* 🌸\n\n` +
         `👤 *Name:* ${name}\n` +
         `📞 *Phone:* ${phone}\n` +
         `🏠 *Address:* ${address}\n\n` +
@@ -374,7 +537,7 @@
       closeCheckoutModal();
     }
 
-    renderProducts();
+    initStoreData();
   </script>
 </body>
 </html>
