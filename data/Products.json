@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "oxidised silver mirror Ring",
+    "name": "Rectangular Ring",
     "category": "rings",
     "price": 39,
     "originalPrice": 39,
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "name": "rectangle Sun ring oxidized",
+    "name": "Rectangle ring with charms",
     "category": "rings",
     "price": 49,
     "originalPrice": 49,
@@ -21,21 +21,21 @@
   },
   {
     "id": 3,
-    "name": "Royal Kundan Choker Set",
-    "category": "necklaces",
+    "name": "Circular ring",
+    "category": "rings",
     "price": 49,
     "originalPrice": 49,
-    "badge": "OUT OF STOCK",
+    "badge": "IN STOCK",
     "image": "https://lh3.googleusercontent.com/d/1P7i31wFalch9zDAwtbbYdU5s_eCoJ_a8",
     "description": "Elegant Kundan handcrafted choker necklace set"
   },
   {
     "id": 4,
-    "name": "oxidised silver mirror Ring",
+    "name": "Multi circular ring",
     "category": "rings",
     "price": 39,
     "originalPrice": 39,
-    "badge": "",
+    "badge": "OUT OF STOCK",
     "image": "https://lh3.googleusercontent.com/d/1560YqgkXtd5Y7eKutz_UaBxc4ymrt8ba",
     "description": "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells"
   },
@@ -45,7 +45,7 @@
     "category": "earrings",
     "price": 220,
     "originalPrice": 220,
-    "badge": "",
+    "badge": "IN STOCK",
     "image": "https://lh3.googleusercontent.com/d/17Rs1dBEBzygDOBjkaNBgEvO47aG3MA-c",
     "description": "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells"
   },
