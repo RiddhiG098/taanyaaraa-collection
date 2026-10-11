@@ -2,34 +2,11 @@
   {
     "_README": [
       "=== HOW TO USE THIS JSON FILE ===",
-      "1. ADD A NEW PRODUCT:",
-      "   - Copy a whole product block from '{' to '}'.",
-      "   - Paste it above the last '}'.",
-      "   - Increase the 'id' number (e.g., 7, 8, 9).",
-      "",
-      "2. COMMA RULE (VERY IMPORTANT!):",
-      "   - Put a comma ',' after EVERY product block '}', EXCEPT the very last product block.",
-      "   - The LAST product block before ']' MUST NOT have a comma at the end.",
-      "",
-      "3. CATEGORIES YOU CAN USE (Must be EXACT lowercase, no capital letters):",
-      "   - 'rings'",
-      "   - 'earrings'",
-      "   - 'necklaces'",
-      "   - 'navaratri'",
-      "   - 'charms'",
-      "   - 'sunglasses'",
-      "",
-      "4. IN STOCK / OUT OF STOCK BADGES:",
-      "   - 'badge': 'IN STOCK'  --> Shows In Stock tag",
-      "   - 'badge': 'OUT OF STOCK' --> Shows Out of Stock tag",
-      "   - 'badge': '' --> No tag (Leave empty like double quotes)",
-      "",
-      "5. IMAGE LINKS:",
-      "   - Paste direct image link inside double quotes: 'https://lh3.googleusercontent.com/d/YOUR_FILE_ID'",
-      "",
-      "6. EDITING PRICES & TEXT:",
-      "   - Price & Original Price: Numbers only (no ₹ sign, no quotes). Example: 249",
-      "   - Name & Description: Keep inside double quotes. Example: \"Royal Kundan Choker Set\""
+      "1. ADD A NEW PRODUCT: Copy a block from { to }, paste it above the last }, and increase the id.",
+      "2. COMMA RULE: Put a comma after every block }, EXCEPT the very last product block.",
+      "3. CATEGORIES: 'rings', 'earrings', 'necklaces', 'navaratri', 'charms', 'sunglasses' (lowercase only!).",
+      "4. BADGES: 'IN STOCK', 'OUT OF STOCK', or '' (empty for no tag).",
+      "5. PRICES: Numbers only, no rupees symbol (e.g., 249)."
     ]
   },
   {
@@ -84,7 +61,7 @@
   },
   {
     "id": 6,
-    "name": "Necklave with matching earrings",
+    "name": "Necklace with matching earrings",
     "category": "necklaces",
     "price": 249,
     "originalPrice": 249,
