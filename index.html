@@ -165,7 +165,7 @@
 
   <!-- POLICY MODAL -->
   <div id="policyModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto">
       <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">✕</button>
       <h3 id="policyModalTitle" class="font-serif text-2xl font-bold text-brand-dark mb-4"></h3>
       <div id="policyModalContent" class="text-xs text-gray-600 leading-relaxed space-y-3"></div>
@@ -178,11 +178,9 @@
     
     <!-- STORE POLICIES -->
     <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-pink-200">
-      <button onclick="openPolicyModal('privacy')" class="hover:text-white hover:underline transition">Privacy Policy</button>
+      <button onclick="openPolicyModal('payment')" class="hover:text-white hover:underline transition">Payment Policy</button>
       <span>•</span>
-      <button onclick="openPolicyModal('terms')" class="hover:text-white hover:underline transition">Terms of Service</button>
-      <span>•</span>
-      <button onclick="openPolicyModal('refund')" class="hover:text-white hover:underline transition">Return & Refund Policy</button>
+      <button onclick="openPolicyModal('refund')" class="hover:text-white hover:underline transition">Exchange Policy</button>
       <span>•</span>
       <button onclick="openPolicyModal('shipping')" class="hover:text-white hover:underline transition">Shipping Policy</button>
     </div>
@@ -260,21 +258,33 @@
     let cart = [];
 
     const policies = {
-      privacy: {
-        title: "Privacy Policy",
-        content: "<p>We value your privacy. Your personal information, such as your name, phone number, and address provided during WhatsApp checkout, is strictly used to process and deliver your orders. We do not sell or share your information with third parties.</p>"
-      },
-      terms: {
-        title: "Terms of Service",
-        content: "<p>By browsing and placing an order on our store, you agree to our direct WhatsApp order flow. Prices and product availability are subject to change. Products are handcrafted and handpicked, so slight variations may occur.</p>"
+      payment: {
+        title: "Payment & Order Policy",
+        content: `
+          <p><strong>Accepted Payment Methods:</strong> We accept Prepaid payments via UPI, Google Pay, PhonePe, and Direct Bank Transfer.</p>
+          <p><strong>Cash on Delivery (COD):</strong> COD is available with an extra ₹50 COD charge and a non-refundable advance payment of ₹100 required to confirm the booking.</p>
+          <p><em>Note: No order is confirmed without payment or advance. This policy prevents fake orders and allows us to keep prices low for genuine customers.</em></p>
+        `
       },
       refund: {
-        title: "Return & Refund Policy",
-        content: "<p>We inspect all jewelry pieces carefully before dispatch. Returns or exchanges are accepted only in case of items damaged during transit. Please make a full unboxing video upon receiving your parcel to claim a replacement or refund.</p>"
+        title: "Exchange Policy",
+        content: `
+          <p><strong>Unboxing Video Mandatory:</strong> A continuous, unedited unboxing video is strictly required for any complaint or claim.</p>
+          <p><strong>Exchange Eligibility:</strong> Exchanges are available strictly for damaged or wrong products received. Please inform us within 24 hours of delivery with your unboxing video.</p>
+          <p><strong>Non-Exchangeable Conditions:</strong> No returns or exchanges for minor color/lighting differences, size issues, or personal preferences.</p>
+          <p><strong>Jewelry Care:</strong> Keep your jewelry away from water and perfume to maintain its shine and longevity.</p>
+        `
       },
       shipping: {
         title: "Shipping Policy",
-        content: "<p>We ship nationwide across India. Orders are processed within 24–48 hours. Free shipping applies on MP orders above ₹499 and Pan-India orders above ₹599. Delivery usually takes 4 to 7 business days depending on your location.</p>"
+        content: `
+          <p><strong>Dispatch & Delivery:</strong> We ship Pan India. Orders are dispatched within 24 to 48 hours after payment. Delivery takes 4 to 7 working days depending on location. Tracking ID will be shared on WhatsApp.</p>
+          <p><strong>Shipping Charges:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Free Shipping:</strong> On orders above ₹499 within Madhya Pradesh, or Pan-India prepaid orders above ₹599.</li>
+            <li><strong>Standard Rate:</strong> Flat ₹70 shipping charge applies to all other orders.</li>
+          </ul>
+        `
       }
     };
 
