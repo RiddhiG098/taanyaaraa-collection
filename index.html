@@ -166,8 +166,6 @@
   <!-- FOOTER -->
   <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-2">
     <p class="font-serif text-lg font-bold text-white" id="footerStoreName">Taanyaaraa Collection</p>
-    <p id="footerContactInfo">WhatsApp: +91 82696 43761 | Direct WhatsApp Shop</p>
-    <p>© 2026 <span id="footerCopyright">Taanyaaraa Collection</span>. All rights reserved.</p>
   </footer>
 
   <script>
@@ -201,6 +199,13 @@
       });
     }
 
+    // Convert raw phone string (e.g. "(+91) 8269643761" or bracketed numbers) to clean digits only
+    function cleanPhoneNumber(phoneStr) {
+      if (!phoneStr) return "918269643761";
+      const digits = phoneStr.replace(/\D/g, '');
+      return digits.length > 0 ? digits : "918269643761";
+    }
+
     function formatImageUrl(url) {
       if (!url) return 'https://via.placeholder.com/300';
       const cleanUrl = url.trim();
@@ -232,7 +237,13 @@
           const text = await cfgRes.text();
           const rows = parseCSV(text);
           rows.forEach(r => {
-            if (r.Key) config[r.Key] = r.Value;
+            if (r.Key) {
+              if (r.Key === 'whatsappNumber') {
+                config[r.Key] = cleanPhoneNumber(r.Value);
+              } else {
+                config[r.Key] = r.Value;
+              }
+            }
           });
         }
       } catch (e) { console.warn("Using default store config."); }
@@ -276,8 +287,6 @@
       document.getElementById('siteHeaderSubtitle').innerText = config.storeTagline;
       document.getElementById('pageTitle').innerText = `${config.storeName} ${config.storeTagline} | Cute & Elegant Jewelry`;
       document.getElementById('footerStoreName').innerText = `${config.storeName} ${config.storeTagline}`;
-      document.getElementById('footerCopyright').innerText = `${config.storeName} ${config.storeTagline}`;
-      document.getElementById('footerContactInfo').innerText = `WhatsApp: +${config.whatsappNumber} | Email: ${config.email}`;
 
       if (config.logoUrl) document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
       if (config.heroImageUrl) document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
@@ -445,7 +454,7 @@
         `Please confirm my order and share payment options!`;
 
       const encodedMsg = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${config.whatsappNumber}?text=${encodedMsg}`;
+      const whatsappUrl = `https://wa.me/${cleanPhoneNumber(config.whatsappNumber)}?text=${encodedMsg}`;
 
       window.open(whatsappUrl, '_blank');
 
