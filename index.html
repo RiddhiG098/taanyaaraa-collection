@@ -237,25 +237,14 @@
 
   <script>
     // =========================================================================
-    // PUBLISHED GOOGLE SHEET LINK PROVIDED BY USER:
+    // PUBLISHED GOOGLE SHEET LINK:
     // https://docs.google.com/spreadsheets/d/e/2PACX-1vTHfZZ7BvBs2QLGlS2IOrIU6SNtdTyfOF0wTBKTF--xK-XXF9Ff5LKLUjdwlh8ULIlKwY4FsEb-aOeT/pubhtml
     // =========================================================================
     const PUBLISHED_BASE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHfZZ7BvBs2QLGlS2IOrIU6SNtdTyfOF0wTBKTF--xK-XXF9Ff5LKLUjdwlh8ULIlKwY4FsEb-aOeT/gviz/tq?tqx=out:json';
 
-    const CONFIG_SHEET_URL  = `${PUBLISHED_BASE}&sheet=Store_Config`;
+    const CONFIG_SHEET_URL   = `${PUBLISHED_BASE}&sheet=Store_Config`;
     const PRODUCTS_SHEET_URL = `${PUBLISHED_BASE}&sheet=Products`;
     const THEME_SHEET_URL    = `${PUBLISHED_BASE}&sheet=Theme_Config`;
-
-    // Helper function to convert raw Google Drive links to direct lh3 image URLs
-    function formatImageUrl(url) {
-      if (!url) return 'https://via.placeholder.com/300';
-      const cleanUrl = url.trim();
-      const driveMatch = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/id=([a-zA-Z0-9_-]+)/);
-      if (driveMatch && driveMatch[1]) {
-        return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
-      }
-      return cleanUrl;
-    }
 
     // DEFAULT FALLBACK CONFIG
     let STORE_CONFIG = {
@@ -346,7 +335,7 @@
           price: Number(row.c[3]?.v || 0),
           originalPrice: Number(row.c[4]?.v || 0),
           badge: row.c[5]?.v || '',
-          image: formatImageUrl(row.c[6]?.v),
+          image: row.c[6]?.v || 'https://via.placeholder.com/300',
           description: row.c[7]?.v || ''
         }));
 
@@ -366,10 +355,10 @@
       document.getElementById('footerContactInfo').innerText = `WhatsApp: +${config.whatsappNumber} | Email: ${config.email}`;
 
       if (config.logoUrl) {
-        document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
+        document.getElementById('logoContainer').innerHTML = `<img src="${config.logoUrl}" class="w-full h-full object-cover">`;
       }
       if (config.heroImageUrl) {
-        document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
+        document.getElementById('heroImage').src = config.heroImageUrl;
       }
     }
 
