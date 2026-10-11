@@ -169,7 +169,7 @@
   </footer>
 
   <script>
-    // Robust CSV parser supporting quotes and commas inside text
+    // CSV Parser supporting double quotes, escaping, and trimmed headers
     function parseCSV(text) {
       const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
       if (lines.length === 0) return [];
@@ -199,11 +199,24 @@
       });
     }
 
-    // Convert raw phone string (e.g. "(+91) 8269643761" or bracketed numbers) to clean digits only
+    // Handles quotes, scientific notation (e.g. 9.18E+11), spaces, and symbols
     function cleanPhoneNumber(phoneStr) {
       if (!phoneStr) return "918269643761";
-      const digits = phoneStr.replace(/\D/g, '');
-      return digits.length > 0 ? digits : "918269643761";
+      
+      // Clean quotes or extra spaces
+      let cleaned = phoneStr.toString().replace(/["']/g, '').trim();
+
+      // Convert scientific notation (e.g. 9.18269643761E+11) to standard numeric string
+      if (/E\+/i.test(cleaned)) {
+        const num = Number(cleaned);
+        if (!isNaN(num)) {
+          cleaned = BigInt(Math.round(num)).toString();
+        }
+      }
+
+      // Strip all non-digit characters
+      const digits = cleaned.replace(/\D/g, '');
+      return digits.length >= 10 ? digits : "918269643761";
     }
 
     function formatImageUrl(url) {
@@ -453,8 +466,9 @@
         `💰 *Total Amount:* ₹${totalPrice}\n\n` +
         `Please confirm my order and share payment options!`;
 
+      const targetPhone = cleanPhoneNumber(config.whatsappNumber);
       const encodedMsg = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${cleanPhoneNumber(config.whatsappNumber)}?text=${encodedMsg}`;
+      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMsg}`;
 
       window.open(whatsappUrl, '_blank');
 
