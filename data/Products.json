@@ -1,15 +1,5 @@
 [
   {
-    "_README": [
-      "=== HOW TO USE THIS JSON FILE ===",
-      "1. ADD A NEW PRODUCT: Copy a block from { to }, paste it above the last }, and increase the id.",
-      "2. COMMA RULE: Put a comma after every block }, EXCEPT the very last product block.",
-      "3. CATEGORIES: 'rings', 'earrings', 'necklaces', 'navaratri', 'charms', 'sunglasses' (lowercase only!).",
-      "4. BADGES: 'IN STOCK', 'OUT OF STOCK', or '' (empty for no tag).",
-      "5. PRICES: Numbers only, no rupees symbol (e.g., 249)."
-    ]
-  },
-  {
     "id": 1,
     "name": "oxidised silver mirror Ring",
     "category": "rings",
