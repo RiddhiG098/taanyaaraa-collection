@@ -163,9 +163,29 @@
     </div>
   </div>
 
+  <!-- POLICY MODAL -->
+  <div id="policyModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+      <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">✕</button>
+      <h3 id="policyModalTitle" class="font-serif text-2xl font-bold text-brand-dark mb-4"></h3>
+      <div id="policyModalContent" class="text-xs text-gray-600 leading-relaxed space-y-3"></div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
-  <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-2">
+  <footer class="bg-brand-dark text-white py-8 px-4 border-t border-pink-900 mt-12 text-center text-xs text-pink-200 space-y-4">
     <p class="font-serif text-lg font-bold text-white" id="footerStoreName">Taanyaaraa Collection</p>
+    
+    <!-- STORE POLICIES -->
+    <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-pink-200">
+      <button onclick="openPolicyModal('privacy')" class="hover:text-white hover:underline transition">Privacy Policy</button>
+      <span>•</span>
+      <button onclick="openPolicyModal('terms')" class="hover:text-white hover:underline transition">Terms of Service</button>
+      <span>•</span>
+      <button onclick="openPolicyModal('refund')" class="hover:text-white hover:underline transition">Return & Refund Policy</button>
+      <span>•</span>
+      <button onclick="openPolicyModal('shipping')" class="hover:text-white hover:underline transition">Shipping Policy</button>
+    </div>
   </footer>
 
   <script>
@@ -203,10 +223,8 @@
     function cleanPhoneNumber(phoneStr) {
       if (!phoneStr) return "918269643761";
       
-      // Clean quotes or extra spaces
       let cleaned = phoneStr.toString().replace(/["']/g, '').trim();
 
-      // Convert scientific notation (e.g. 9.18269643761E+11) to standard numeric string
       if (/E\+/i.test(cleaned)) {
         const num = Number(cleaned);
         if (!isNaN(num)) {
@@ -214,7 +232,6 @@
         }
       }
 
-      // Strip all non-digit characters
       const digits = cleaned.replace(/\D/g, '');
       return digits.length >= 10 ? digits : "918269643761";
     }
@@ -241,6 +258,25 @@
     let products = [];
     let currentCategory = 'all';
     let cart = [];
+
+    const policies = {
+      privacy: {
+        title: "Privacy Policy",
+        content: "<p>We value your privacy. Your personal information, such as your name, phone number, and address provided during WhatsApp checkout, is strictly used to process and deliver your orders. We do not sell or share your information with third parties.</p>"
+      },
+      terms: {
+        title: "Terms of Service",
+        content: "<p>By browsing and placing an order on our store, you agree to our direct WhatsApp order flow. Prices and product availability are subject to change. Products are handcrafted and handpicked, so slight variations may occur.</p>"
+      },
+      refund: {
+        title: "Return & Refund Policy",
+        content: "<p>We inspect all jewelry pieces carefully before dispatch. Returns or exchanges are accepted only in case of items damaged during transit. Please make a full unboxing video upon receiving your parcel to claim a replacement or refund.</p>"
+      },
+      shipping: {
+        title: "Shipping Policy",
+        content: "<p>We ship nationwide across India. Orders are processed within 24–48 hours. Free shipping applies on MP orders above ₹499 and Pan-India orders above ₹599. Delivery usually takes 4 to 7 business days depending on your location.</p>"
+      }
+    };
 
     async function initStoreData() {
       // 1. Fetch Store Config CSV
@@ -446,6 +482,18 @@
 
     function closeCheckoutModal() {
       document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    function openPolicyModal(policyKey) {
+      const p = policies[policyKey];
+      if (!p) return;
+      document.getElementById('policyModalTitle').innerText = p.title;
+      document.getElementById('policyModalContent').innerHTML = p.content;
+      document.getElementById('policyModal').classList.remove('hidden');
+    }
+
+    function closePolicyModal() {
+      document.getElementById('policyModal').classList.add('hidden');
     }
 
     function sendWhatsAppOrder(e) {
