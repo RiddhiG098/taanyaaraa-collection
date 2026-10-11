@@ -1,4 +1,3 @@
-<!-- Line 1: HTML Document Start -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,7 +79,7 @@
         <p class="text-gray-600 text-sm sm:text-base">Select your favorite pieces and order directly on WhatsApp!</p>
       </div>
       <div class="w-full md:w-auto flex justify-center">
-        <img id="heroImage" src="https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0" class="w-64 h-64 object-cover rounded-3xl shadow-xl border-4 border-white rotate-2 hover:rotate-0 transition duration-300">
+        <img id="heroImage" src="https://lh3.googleusercontent.com/d/1RYon4HdKFwV2g8wCF3w1VTNHrus58Aw8" class="w-64 h-64 object-cover rounded-3xl shadow-xl border-4 border-white rotate-2 hover:rotate-0 transition duration-300">
       </div>
     </div>
   </section>
@@ -117,7 +116,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- PAYMENT POLICY -->
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
           <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
             <i class="fa-solid fa-credit-card text-brand-accent"></i> Payment Policy
@@ -129,7 +127,6 @@
           </p>
         </div>
 
-        <!-- EXCHANGE & CARE POLICY -->
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
           <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
             <i class="fa-solid fa-box-open text-brand-accent"></i> Exchange & Jewelry Care
@@ -142,7 +139,6 @@
           </p>
         </div>
 
-        <!-- SHIPPING POLICY -->
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-pink-100 shadow-sm space-y-2">
           <div class="text-brand-accent text-sm font-bold flex items-center gap-2">
             <i class="fa-solid fa-truck-fast text-brand-accent"></i> Shipping Policy
@@ -171,7 +167,6 @@
 
       <div id="cartItemsList" class="p-5 flex-1 overflow-y-auto space-y-4"></div>
 
-      <!-- CART SUMMARY & CHECKOUT BUTTON -->
       <div class="p-5 border-t border-pink-100 bg-pink-50/30 space-y-3">
         <div class="flex justify-between text-base font-bold text-brand-dark">
           <span>Total Amount:</span>
@@ -236,36 +231,49 @@
   </footer>
 
   <script>
-    // DEFAULT FALLBACK CONFIG
+    function formatImageUrl(url) {
+      if (!url) return 'https://via.placeholder.com/300';
+      const cleanUrl = url.trim();
+      const driveMatch = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/id=([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
+      }
+      return cleanUrl;
+    }
+
     let config = {
       storeName: "Taanyaaraa",
       storeTagline: "Collection",
       whatsappNumber: "918269643761",
       email: "contact@taanyaaraa.com",
-      logoUrl: "",
-      heroImageUrl: "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0"
+      logoUrl: "https://lh3.googleusercontent.com/d/1RYon4HdKFwV2g8wCF3w1VTNHrus58Aw8",
+      heroImageUrl: "https://lh3.googleusercontent.com/d/1RYon4HdKFwV2g8wCF3w1VTNHrus58Aw8"
     };
 
-    let products = [];
+    let products = [
+      { id: 1, name: "oxidised silver mirror Ring", category: "rings", price: 39, originalPrice: 39, badge: "OUT OF STOCK", image: "https://lh3.googleusercontent.com/d/1cC2bQHQ2GPudTM9YjKnz2UvxZIGbhRiq", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
+      { id: 2, name: "rectangle Sun ring oxidized", category: "rings", price: 49, originalPrice: 49, badge: "IN STOCK", image: "https://lh3.googleusercontent.com/d/1KF5TFWZG5ANNWBDeQaqBfjIzZ24QcCD0", description: "oxidised silver statement ring featuring an intricate rectangular design with a central motif" },
+      { id: 3, name: "Royal Kundan Choker Set", category: "necklaces", price: 49, originalPrice: 49, badge: "OUT OF STOCK", image: "https://lh3.googleusercontent.com/d/1P7i31wFalch9zDAwtbbYdU5s_eCoJ_a8", description: "Elegant Kundan handcrafted choker necklace set" },
+      { id: 4, name: "oxidised silver mirror Ring", category: "rings", price: 39, originalPrice: 39, badge: "", image: "https://lh3.googleusercontent.com/d/1560YqgkXtd5Y7eKutz_UaBxc4ymrt8ba", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
+      { id: 5, name: "EarRing", category: "earrings", price: 220, originalPrice: 220, badge: "", image: "https://lh3.googleusercontent.com/d/17Rs1dBEBzygDOBjkaNBgEvO47aG3MA-c", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" },
+      { id: 6, name: "Necklace with matching earrings", category: "necklaces", price: 249, originalPrice: 249, badge: "IN STOCK", image: "https://lh3.googleusercontent.com/d/1rY5X4SBowvfGL35a5J_-PskQejALE9cE", description: "An ethnic oxidized silver statement ring featuring mirror extends and small dangling Bells" }
+    ];
+
     let currentCategory = 'all';
     let cart = [];
 
-    // LOAD LOCAL JSON DATA FROM ./data/ FOLDER
     async function initStoreData() {
-      // 1. Fetch Local Store Config
       try {
         const cfgRes = await fetch('./data/Store_Config.json');
         if (cfgRes.ok) {
           const cfgData = await cfgRes.json();
           config = { ...config, ...cfgData };
         }
-        updateUIConfig();
       } catch (e) {
-        console.warn("Using default config settings.", e);
-        updateUIConfig();
+        console.warn("Using default config settings.");
       }
+      updateUIConfig();
 
-      // 2. Fetch Local Theme Config
       try {
         const themeRes = await fetch('./data/Theme_Config.json');
         if (themeRes.ok) {
@@ -275,20 +283,21 @@
           });
         }
       } catch (e) {
-        console.warn("Using default theme colors.", e);
+        console.warn("Using default theme colors.");
       }
 
-      // 3. Fetch Local Products
       try {
         const prodRes = await fetch('./data/Products.json');
         if (prodRes.ok) {
-          products = await prodRes.json();
+          const prodData = await prodRes.json();
+          if (Array.isArray(prodData) && prodData.length > 0) {
+            products = prodData.map(p => ({ ...p, image: formatImageUrl(p.image) }));
+          }
         }
-        renderProducts();
       } catch (e) {
-        console.warn("Using default product list.", e);
-        renderProducts();
+        console.warn("Using default product fallback list.");
       }
+      renderProducts();
     }
 
     function updateUIConfig() {
@@ -300,10 +309,10 @@
       document.getElementById('footerContactInfo').innerText = `WhatsApp: +${config.whatsappNumber} | Email: ${config.email}`;
 
       if (config.logoUrl) {
-        document.getElementById('logoContainer').innerHTML = `<img src="${config.logoUrl}" class="w-full h-full object-cover">`;
+        document.getElementById('logoContainer').innerHTML = `<img src="${formatImageUrl(config.logoUrl)}" class="w-full h-full object-cover">`;
       }
       if (config.heroImageUrl) {
-        document.getElementById('heroImage').src = config.heroImageUrl;
+        document.getElementById('heroImage').src = formatImageUrl(config.heroImageUrl);
       }
     }
 
@@ -312,8 +321,8 @@
       const search = document.getElementById('searchInput').value.toLowerCase();
 
       const filtered = products.filter(p => {
-        const matchesCat = currentCategory === 'all' || p.category.toLowerCase() === currentCategory;
-        const matchesSearch = p.name.toLowerCase().includes(search);
+        const matchesCat = currentCategory === 'all' || (p.category && p.category.toLowerCase() === currentCategory);
+        const matchesSearch = p.name && p.name.toLowerCase().includes(search);
         return matchesCat && matchesSearch;
       });
 
