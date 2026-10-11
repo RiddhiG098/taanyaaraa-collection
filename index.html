@@ -331,27 +331,37 @@
         return;
       }
 
-      grid.innerHTML = filtered.map(p => `
-        <div class="bg-white rounded-3xl p-4 border border-pink-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
-          <div>
-            <div class="relative overflow-hidden rounded-2xl mb-3 aspect-square bg-pink-50">
-              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              ${p.badge && p.badge.trim() ? `<span class="absolute top-2 left-2 bg-brand-accent/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">${p.badge}</span>` : ''}
-            </div>
-            <h3 class="font-bold text-brand-dark text-base mb-1">${p.name}</h3>
-            <p class="text-xs text-gray-500 line-clamp-2 mb-3">${p.description}</p>
-          </div>
-          <div class="flex items-center justify-between pt-2 border-t border-pink-50">
+      grid.innerHTML = filtered.map(p => {
+        const isOutOfStock = p.badge && p.badge.trim().toLowerCase() === 'out of stock';
+        
+        return `
+          <div class="bg-white rounded-3xl p-4 border border-pink-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
             <div>
-              <span class="text-lg font-bold text-brand-accent">₹${p.price}</span>
-              ${p.originalPrice && p.originalPrice > p.price ? `<span class="text-xs text-gray-400 line-through ml-1.5">₹${p.originalPrice}</span>` : ''}
+              <div class="relative overflow-hidden rounded-2xl mb-3 aspect-square bg-pink-50">
+                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ${isOutOfStock ? 'opacity-60 grayscale-[30%]' : ''}">
+                ${p.badge && p.badge.trim() ? `<span class="absolute top-2 left-2 ${isOutOfStock ? 'bg-gray-600' : 'bg-brand-accent/90'} backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">${p.badge}</span>` : ''}
+              </div>
+              <h3 class="font-bold text-brand-dark text-base mb-1">${p.name}</h3>
+              <p class="text-xs text-gray-500 line-clamp-2 mb-3">${p.description}</p>
             </div>
-            <button onclick="addToCart(${p.id})" class="bg-pink-100 hover:bg-brand-accent hover:text-white text-brand-accent text-xs font-bold px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
-              <i class="fa-solid fa-plus text-xs"></i> Add
-            </button>
+            <div class="flex items-center justify-between pt-2 border-t border-pink-50">
+              <div>
+                <span class="text-lg font-bold text-brand-accent">₹${p.price}</span>
+                ${p.originalPrice && p.originalPrice > p.price ? `<span class="text-xs text-gray-400 line-through ml-1.5">₹${p.originalPrice}</span>` : ''}
+              </div>
+              ${isOutOfStock ? `
+                <button disabled class="bg-gray-100 text-gray-400 cursor-not-allowed text-xs font-bold px-3.5 py-2 rounded-full flex items-center gap-1.5 border border-gray-200">
+                  <i class="fa-solid fa-ban text-xs"></i> Out of Stock
+                </button>
+              ` : `
+                <button onclick="addToCart(${p.id})" class="bg-pink-100 hover:bg-brand-accent hover:text-white text-brand-accent text-xs font-bold px-3.5 py-2 rounded-full transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-plus text-xs"></i> Add
+                </button>
+              `}
+            </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function setCategory(cat) {
@@ -372,6 +382,8 @@
 
     function addToCart(id) {
       const item = products.find(p => p.id === id);
+      if (!item || (item.badge && item.badge.trim().toLowerCase() === 'out of stock')) return;
+
       const existing = cart.find(c => c.id === id);
       if (existing) {
         existing.qty += 1;
